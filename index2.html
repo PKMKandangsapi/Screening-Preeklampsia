@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screening Risiko Preeklampsia</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Screening Risiko Preeklampsia</h1>
+    <form id="screeningForm">
+      <div class="form-group">
+        <label for="name">Nama:</label>
+        <input type="text" id="name" required><br><br>
+      </div>
+
+      <div class="form-group">
+        <div class="birthdate-age-container">
+          <div class="birthdate-container">
+            <label for="birthdate">Tanggal Lahir:</label>
+            <input type="date" id="birthdate" onchange="hitungUsia()">
+          </div>
+
+          <div class="age-container">
+            <label for="age">Usia (tahun):</label>
+            <input type="number" id="age" required>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="hpht-gestationalAge-container">
+          <div class="hpht-container">
+            <label for="hpht">Hari Pertama Haid Terakhir (HPHT):</label>
+            <input type="date" id="hpht" onchange="hitungUsiaKehamilan()"><br><br>
+          </div>
+        
+          <div class="gestationalAge-container">
+            <label for="gestationalAge">Usia Kehamilan (minggu):</label>
+            <input type="number" id="gestationalAge" min="1" max="42" required><br><br>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="weight0">Berat Badan sebelum hamil (kg):</label>
+        <input type="number" step="any" id="weight0"><br><br>
+      </div>
+      
+      <div class="form-group">
+        <label for="weight">Berat Badan saat ini (kg):</label>
+        <input type="number" step="any" id="weight" required><br><br>
+      </div>
+
+      <div class="form-group">
+        <label for="height">Tinggi Badan (cm):</label>
+        <input type="number"  step="any" id="height" required><br><br>
+      </div>
+
+      <div class="form-group">
+        <label for="systolic">Tekanan Darah Sistole (mmHg):</label>
+        <input type="number" id="systolic" required><br><br>
+      </div>
+
+      <div class="form-group">
+        <label for="diastolic">Tekanan Darah Diastole (mmHg):</label>
+        <input type="number" id="diastolic" required><br><br>
+      </div>
+
+      <h3>Faktor Risiko Tinggi</h3>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="risk" value="2"> Riwayat preeklampsia sebelumnya</label><br>
+        <label><input type="checkbox" name="risk" value="2"> Kehamilan multiple/kembar</label><br>
+        <label><input type="checkbox" name="risk" value="2"> Hipertensi kronis</label><br>
+        <label><input type="checkbox" name="risk" value="2"> Diabetes melitus</label><br>
+        <label><input type="checkbox" name="risk" value="2"> Penyakit ginjal kronis</label><br>
+        <label><input type="checkbox" name="risk" value="2"> Penyakit autoimun (contoh : SLE, Antiphospolipid syndrome)</label><br>
+      </div>
+
+      <h3>Faktor Risiko Sedang</h3>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="risk" value="1"> Kehamilan pertama (Nullipara)</label><br>
+        <label><input type="checkbox" name="risk" value="1"> Kehamilan multiple dengan pasangan baru</label><br>
+        <label><input type="checkbox" name="risk" value="1"> Jarak kehamilan sebelumnya >10 tahun</label><br>
+        <label><input type="checkbox" name="risk" value="1"> Usia ≥35 tahun</label><br>
+        <label><input type="checkbox" name="risk" value="1"> Obesitas sebelum hamil (BMI >30)</label><br>
+        <label><input type="checkbox" name="risk" value="1"> Riwayat keluarga preeklampsia (ibu atau saudara kandung)</label><br>
+      </div>
+
+      <button type="button" onclick="hitungSkor()">Hitung Skor</button>
+    </form>
+
+    <div id="hasil" class="hasil">
+      <h2>Hasil Screening Risiko Preeklampsia</h2>
+      <p id="resultText"></p>
+      <h3>Anjuran</h3>
+      <p id="anjuranText"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

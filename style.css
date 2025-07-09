@@ -1,0 +1,171 @@
+/* Reset dan pengaturan dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container utama */
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Judul halaman */
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form group */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="date"], input[type="number"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.birthdate-age-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;  /* Jarak antar kolom */
+}
+
+.birthdate-container, .age-container {
+    flex: 1; /* Kolom akan dibagi rata */
+}
+
+.birthdate-container input, .age-container input {
+    width: 100%; /* Memastikan input mengambil lebar penuh dari kolom */
+}
+
+.hpht-gestationalAge-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.hpht-container, .gestationalAge-container {
+    flex: 1;
+}
+
+.hpht-container input, .gestationalAge-container input {
+    width: 100%;
+}
+
+input[type="number"], input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+input[type="number"]:focus, input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Checkbox Group */
+.checkbox-group {
+  margin: 20px 0;
+}
+
+.checkbox-group label {
+  font-size: 20px;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+/* Hasil Screening */
+.hasil-item {
+  margin-bottom: 20px; /* Menambahkan jarak antar kategori */
+}
+
+.hasil-item strong {
+  display: inline-block;
+  width: 200px;
+}
+
+#hasil {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  display: none;
+}
+
+#hasil h2 {
+  text-align: center;
+  color: #333;
+}
+
+#hasil p {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Anjuran untuk Aspirin */
+#anjuranText {
+  background-color: #e7f5e5;
+  padding: 10px;
+  border-left: 5px solid #28a745;
+  font-size: 16px;
+  margin-top: 20px;
+  color: #28a745;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+
+  #hasil p {
+    font-size: 16px;
+  }
+}
