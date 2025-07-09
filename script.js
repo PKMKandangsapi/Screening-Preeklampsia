@@ -168,12 +168,3 @@ function simpanHasil() {
     alert('Gagal menyimpan hasil screening!');
   });
 }
-
-function getSelectedRiskFactors() {
-  const selectedFactors = [];
-  const riskCheckboxes = document.querySelectorAll('input[name="risk"]:checked');
-  riskCheckboxes.forEach(checkbox => {
-    selectedFactors.push(checkbox.parentElement.innerText);
-  });
-  return selectedFactors.join(', ');
-}
