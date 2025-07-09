@@ -1,33 +1,3 @@
-function hitungUsia() {
-  const birthdate = document.getElementById('birthdate').value;
-  if (birthdate) {
-    const birth = new Date(birthdate);
-    const today = new Date();
-    let age = today.getFullYear() - birth.getFullYear();
-    const m = today.getMonth() - birth.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
-      age--;
-    }
-    document.getElementById('age').value = age;
-  }
-}
-
-function hitungUsiaKehamilan() {
-  const hpht = document.getElementById('hpht').value;
-  if (hpht) {
-    const hphtDate = new Date(hpht);
-    const today = new Date();
-
-    const diffInMs = today - hphtDate;
-    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
-    const gestationalWeeks = Math.floor(diffInDays / 7);
-
-    if (gestationalWeeks >= 1 && gestationalWeeks <= 42) {
-      document.getElementById('gestationalAge').value = gestationalWeeks;
-    }
-  }
-}
-
 function hitungSkor() {
   const name = document.getElementById('name').value;
   const age = parseInt(document.getElementById('age').value);
@@ -120,9 +90,50 @@ function hitungSkor() {
   ].join('<br>')}
   `;
 
-
   const anjuran = document.getElementById('anjuranText');
   anjuran.innerHTML = anjuranText;
 
   document.getElementById('hasil').style.display = 'block';
+
+  // Ambil data yang diinput untuk dikirim ke Google Sheets
+  const data = {
+    name,
+    age,
+    gestationalAge,
+    bmiBeforePregnancy,
+    bmiCurrent,
+    map,
+    riskCategory,
+    faktorRisikoOtomatis,
+    anjuranText
+  };
+
+  // URL Web App Google Apps Script yang sudah kamu buat
+  const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyhs2nVPmOD2gy6zGce-p6AXPuNZqq81FGckzKodopM227iORVvXG6J5aS0voDQvyR4xQ/exec';  // Gantilah dengan URL Web App yang kamu dapatkan
+
+  // Mengirim data ke Google Sheets menggunakan Fetch API
+  fetch(googleScriptUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+  .then(response => response.text())
+  .then(data => {
+    alert('Hasil screening berhasil disimpan ke Google Sheets!');
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Gagal menyimpan hasil screening!');
+  });
+}
+
+function getSelectedRiskFactors() {
+  const selectedFactors = [];
+  const riskCheckboxes = document.querySelectorAll('input[name="risk"]:checked');
+  riskCheckboxes.forEach(checkbox => {
+    selectedFactors.push(checkbox.parentElement.innerText);
+  });
+  return selectedFactors.join(', ');
 }
