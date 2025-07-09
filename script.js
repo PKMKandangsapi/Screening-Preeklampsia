@@ -1,3 +1,33 @@
+function hitungUsia() {
+  const birthdate = document.getElementById('birthdate').value;
+  if (birthdate) {
+    const birth = new Date(birthdate);
+    const today = new Date();
+    let age = today.getFullYear() - birth.getFullYear();
+    const m = today.getMonth() - birth.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
+      age--;
+    }
+    document.getElementById('age').value = age;
+  }
+}
+
+function hitungUsiaKehamilan() {
+  const hpht = document.getElementById('hpht').value;
+  if (hpht) {
+    const hphtDate = new Date(hpht);
+    const today = new Date();
+
+    const diffInMs = today - hphtDate;
+    const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
+    const gestationalWeeks = Math.floor(diffInDays / 7);
+
+    if (gestationalWeeks >= 1 && gestationalWeeks <= 42) {
+      document.getElementById('gestationalAge').value = gestationalWeeks;
+    }
+  }
+}
+
 function hitungSkor() {
   const name = document.getElementById('name').value;
   const age = parseInt(document.getElementById('age').value);
@@ -90,6 +120,7 @@ function hitungSkor() {
   ].join('<br>')}
   `;
 
+
   const anjuran = document.getElementById('anjuranText');
   anjuran.innerHTML = anjuranText;
 
@@ -104,8 +135,7 @@ function hitungSkor() {
     bmiCurrent,
     map,
     riskCategory,
-    faktorRisikoOtomatis,
-    anjuranText
+    faktorRisikoOtomatis
   };
 
   // URL Web App Google Apps Script yang sudah kamu buat
