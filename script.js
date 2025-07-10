@@ -149,7 +149,7 @@ function simpanHasil() {
   };
 
   // URL Web App Google Apps Script yang sudah kamu buat
-  const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyhs2nVPmOD2gy6zGce-p6AXPuNZqq81FGckzKodopM227iORVvXG6J5aS0voDQyvR4xQ/exec';  // Gantilah dengan URL Web App
+  const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbxUNWv6hFtIR-qAzFLTbx_jNaMtBmiYuVVmV78zbqaMzOEfZ8K3aX6U10cg_FPihOXb/exec';  // Gantilah dengan URL Web App
 
   // Mengirim data ke Google Sheets menggunakan Fetch API
   fetch(googleScriptUrl, {
