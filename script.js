@@ -127,44 +127,21 @@ function hitungSkor() {
   document.getElementById('hasil').style.display = 'block';
 }
 
-function simpanHasil() {
-  const name = document.getElementById('name').value;
-  const age = parseInt(document.getElementById('age').value);
-  const gestationalAge = parseInt(document.getElementById('gestationalAge').value);
-  const bmiBeforePregnancy = parseFloat(document.getElementById('bmiBeforePregnancy').value); // Menghitung BMI
-  const bmiCurrent = parseFloat(document.getElementById('bmiCurrent').value); // Menghitung BMI
-  const map = parseFloat(document.getElementById('map').value); // Menghitung MAP
-  const riskCategory = document.getElementById('riskCategory').value;
-  const riskFactors = getSelectedRiskFactors(); // Ambil faktor risiko yang dipilih
+function simpanKeSpreadsheet(data) {
+  const url = "https://script.google.com/macros/s/AKfycbxyz123abc456/exec"; // Ganti dengan URL Web App kamu
 
-  const data = {
-    name,
-    age,
-    gestationalAge,
-    bmiBeforePregnancy,
-    bmiCurrent,
-    map,
-    riskCategory,
-    riskFactors,
-  };
-
-  // URL Web App Google Apps Script yang sudah kamu buat
-  const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbxUNWv6hFtIR-qAzFLTbx_jNaMtBmiYuVVmV78zbqaMzOEfZ8K3aX6U10cg_FPihOXb/exec';  // Gantilah dengan URL Web App
-
-  // Mengirim data ke Google Sheets menggunakan Fetch API
-  fetch(googleScriptUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+  fetch(url, {
+    method: "POST",
     body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json"
+    }
   })
-  .then(response => response.text())
-  .then(data => {
-    alert('Hasil screening berhasil disimpan ke Google Sheets!');
+  .then(response => response.json())
+  .then(json => {
+    console.log("Data berhasil dikirim:", json);
   })
-  .catch(error => {
-    console.error('Error:', error);
-    alert('Gagal menyimpan hasil screening!');
+  .catch(err => {
+    console.error("Gagal mengirim data:", err);
   });
 }
