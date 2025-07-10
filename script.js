@@ -124,6 +124,27 @@ function hitungSkor() {
   const anjuran = document.getElementById('anjuranText');
   anjuran.innerHTML = anjuranText;
 
+  const dataUntukSpreadsheet = {
+    nama: name,
+    usia: age,
+    usiaKehamilan: gestationalAge,
+    bbSebelum: weight0 || "N/A",
+    bbSaatIni: weight,
+    tb: height,
+    bmiSebelum: bmiBeforePregnancy,
+    bmiSekarang: bmiCurrent,
+    sistol: systolic,
+    diastol: diastolic,
+    map: map.toFixed(2),
+    faktorRisiko: [
+      ...Array.from(riskCheckboxes).map(cb => cb.parentElement.innerText),
+      ...faktorRisikoOtomatis
+    ].join("; "),
+    kategori: riskCategory
+  };
+  
+  simpanKeSpreadsheet(dataUntukSpreadsheet);
+  
   document.getElementById('hasil').style.display = 'block';
 }
 
