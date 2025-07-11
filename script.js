@@ -149,7 +149,7 @@ function hitungSkor() {
 }
 
 function simpanKeSpreadsheet(data) {
-  const url = "https://script.google.com/macros/s/AKfycbxUNWv6hFtIR-qAzFLTbx_jNaMtBmiYuVVmV78zbqaMzOEfZ8K3aX6U10cg_FPihOXb/exec";
+  const url = "https://script.google.com/macros/s/AKfycbwVeRhDUZEu8N4NJ0vfpYibE08paWw5342BJAIgu_s/dev";
 
   fetch(url, {
     method: "POST",
