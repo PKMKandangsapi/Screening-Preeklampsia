@@ -124,45 +124,25 @@ function hitungSkor() {
   const anjuran = document.getElementById('anjuranText');
   anjuran.innerHTML = anjuranText;
 
-  const dataUntukSpreadsheet = {
-    nama: name,
-    usia: age,
-    usiaKehamilan: gestationalAge,
-    bbSebelum: weight0 || "N/A",
-    bbSaatIni: weight,
-    tb: height,
-    bmiSebelum: bmiBeforePregnancy,
-    bmiSekarang: bmiCurrent,
-    sistol: systolic,
-    diastol: diastolic,
-    map: map.toFixed(2),
-    faktorRisiko: [
-      ...Array.from(riskCheckboxes).map(cb => cb.parentElement.innerText),
-      ...faktorRisikoOtomatis
-    ].join("; "),
-    kategori: riskCategory
-  };
-  
-  simpanKeSpreadsheet(dataUntukSpreadsheet);
-  
   document.getElementById('hasil').style.display = 'block';
 }
 
-function simpanKeSpreadsheet(data) {
-  const url = "https://script.google.com/macros/s/AKfycbxUNWv6hFtIR-qAzFLTbx_jNaMtBmiYuVVmV78zbqaMzOEfZ8K3aX6U10cg_FPihOXb/exec";
-
-  fetch(url, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  .then(response => response.json())
-  .then(json => {
-    console.log("Data berhasil dikirim:", json);
-  })
-  .catch(err => {
-    console.error("Gagal mengirim data:", err);
-  });
+// Simpan Gsheet
+function SimpanGsheet() {
+  <form id="FORM_ID" method="POST" action="https://script.google.com/macros/s/AKfycbxUNWv6hFtIR-qAzFLTbx_jNaMtBmiYuVVmV78zbqaMzOEfZ8K3aX6U10cg_FPihOXb/exec">
+  <input name="Nama" type="text" placeholder="name" required>
+  <input name="Usia" type="number" placeholder="age" required>
+  <input name="Usia Kehamilan" type="number" placeholder="gestationalAge" required>
+  <input name="Berat Badan Sebelum Hamil" type="number" placeholder="weight0" required>
+  <input name="Berat Badan Saat Ini" type="number" placeholder="weight" required>
+  <input name="Tinggi Badan" type="number" placeholder="height" required>
+  <input name="BMI Sebelum Hamil" type="number" placeholder="bmiBeforePregnancy" required>
+  <input name="BMI Saat Ini" type="number" placeholder="bmiCurrent" required>
+  <input name="Sistol" type="number" placeholder="systolic" required>
+  <input name="Diastol" type="number" placeholder="diastolic" required>
+  <input name="MAP" type="number" placeholder="map" required>
+  <input name="Faktor Risiko" type="checkbox" placeholder="riskCheckboxes" required>
+  <input name="Kategori Risiko" type="text" placeholder="riskCategory" required>
+  <button type="submit">Send</button>
+</form>
 }
