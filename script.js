@@ -125,4 +125,35 @@ function hitungSkor() {
   anjuran.innerHTML = anjuranText;
 
   document.getElementById('hasil').style.display = 'block';
+
+  // Kirim data ke Google Sheets
+  const dataToSend = {
+    nama: name,
+    usia: age,
+    usiaKehamilan: gestationalAge,
+    beratSebelum: weight0 || "N/A",
+    beratSaatIni: weight,
+    tinggi: height,
+    bmiSebelum: bmiBeforePregnancy,
+    bmiSaatIni: bmiCurrent,
+    sistol: systolic,
+    diastol: diastolic,
+    map: map.toFixed(2),
+    faktorRisiko: [
+      ...Array.from(riskCheckboxes).map(cb => cb.parentElement.innerText),
+      ...faktorRisikoOtomatis
+    ].join('; '),
+    kategori: riskCategory
+  };
+  
+  fetch("https://script.google.com/macros/s/AKfyc.../exec", { // Ganti dengan URL milikmu
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dataToSend)
+  })
+  .then(() => console.log("Data terkirim ke Google Sheets"))
+  .catch(error => console.error("Gagal mengirim data:", error));
 }
