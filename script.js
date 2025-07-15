@@ -126,23 +126,3 @@ function hitungSkor() {
 
   document.getElementById('hasil').style.display = 'block';
 }
-
-// Simpan Gsheet
-function SimpanGsheet() {
-  <form id="FORM_ID" method="POST" action="https://script.google.com/macros/s/AKfycbxUNWv6hFtIR-qAzFLTbx_jNaMtBmiYuVVmV78zbqaMzOEfZ8K3aX6U10cg_FPihOXb/exec">
-  <input name="Nama" type="text" placeholder="name" required>
-  <input name="Usia" type="number" placeholder="age" required>
-  <input name="Usia Kehamilan" type="number" placeholder="gestationalAge" required>
-  <input name="Berat Badan Sebelum Hamil" type="number" placeholder="weight0" required>
-  <input name="Berat Badan Saat Ini" type="number" placeholder="weight" required>
-  <input name="Tinggi Badan" type="number" placeholder="height" required>
-  <input name="BMI Sebelum Hamil" type="number" placeholder="bmiBeforePregnancy" required>
-  <input name="BMI Saat Ini" type="number" placeholder="bmiCurrent" required>
-  <input name="Sistol" type="number" placeholder="systolic" required>
-  <input name="Diastol" type="number" placeholder="diastolic" required>
-  <input name="MAP" type="number" placeholder="map" required>
-  <input name="Faktor Risiko" type="checkbox" placeholder="riskCheckboxes" required>
-  <input name="Kategori Risiko" type="text" placeholder="riskCategory" required>
-  <button type="submit">Send</button>
-</form>
-}
