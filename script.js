@@ -146,7 +146,7 @@ function hitungSkor() {
     kategori: riskCategory
   };
   
-  fetch("https://script.google.com/macros/s/AKfyc.../exec", { // Ganti dengan URL milikmu
+  fetch("https://script.google.com/macros/s/AKfycbxUNWv6hFtIR-qAzFLTbx_jNaMtBmiYuVVmV78zbqaMzOEfZ8K3aX6U10cg_FPihOXb/exec", { 
     method: "POST",
     mode: "no-cors",
     headers: {
