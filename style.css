@@ -51,15 +51,15 @@ input[type="date"], input[type="number"] {
 .birthdate-age-container {
     display: flex;
     justify-content: space-between;
-    gap: 20px;  /* Jarak antar kolom */
+    gap: 20px;  
 }
 
 .birthdate-container, .age-container {
-    flex: 1; /* Kolom akan dibagi rata */
+    flex: 1; 
 }
 
 .birthdate-container input, .age-container input {
-    width: 100%; /* Memastikan input mengambil lebar penuh dari kolom */
+    width: 100%; 
 }
 
 .hpht-gestationalAge-container {
@@ -117,7 +117,7 @@ button:hover {
 
 /* Hasil Screening */
 .hasil-item {
-  margin-bottom: 20px; /* Menambahkan jarak antar kategori */
+  margin-bottom: 20px; 
 }
 
 .hasil-item strong {
